@@ -10,13 +10,13 @@ public class Util {
     private static final String password = "springcourse";
 
     public static Connection getConnection() {
-        Connection connection = null;
+        Connection connection;
         try {
             connection = DriverManager.getConnection(url, user, password);
             connection.setAutoCommit(false);
         } catch (SQLException e) {
             System.err.println("Error with DB connection: " + e.getMessage());
-            throw new RuntimeException("Failed to establish a connection to the database" + e);
+            throw new RuntimeException("Failed to establish a connection to the database", e);
         }
         return connection;
     }

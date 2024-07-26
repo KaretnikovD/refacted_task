@@ -16,10 +16,10 @@ public class User {
     private String lastName;
 
     @Column
-    private Integer age;
+    private Byte age;
 
 
-    public User(long id, String name, String lastName, Integer age) {
+    public User(long id, String name, String lastName, Byte age) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -50,11 +50,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
+    public Byte getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Byte age) {
         this.age = age;
     }
 
