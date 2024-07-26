@@ -26,6 +26,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     "name VARCHAR(50) NOT NULL, " +
                     "lastName VARCHAR(50) NOT NULL, " +
                     "age TINYINT NOT NULL)");
+            connection.commit();
         } catch (Exception e) {
             System.err.println("Error during create users table: " + e.getMessage());
         }
@@ -34,6 +35,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
             statement.execute("DROP TABLE IF EXISTS mydatabase1.users");
+            connection.commit();
         } catch (Exception e) {
             System.err.println("Error during drop users table: " + e.getMessage());
         }
@@ -88,8 +90,9 @@ public class UserDaoJDBCImpl implements UserDao {
                 byte age = rs.getByte("age");
                 User user = new User(id, name, lastName, age);
                 users.add(user);
+                connection.commit();
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.err.println("Error to get UserList: " + e.getMessage());
         }
         return users;
